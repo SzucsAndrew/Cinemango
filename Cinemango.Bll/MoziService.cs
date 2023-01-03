@@ -25,8 +25,6 @@ namespace Cinemango
             var foglaltHelyek = vetites.Jegyek.Select(j => j.UlohelyId).ToHashSet();
             var teremUlohelyek = await DbContext.Ulohelyek.Where(u => u.TeremId == vetites.TeremId).ToListAsync();
             return teremUlohelyek.Select(t => new VetitesUlohely(t.Oldal, t.Sor, t.Szek, foglaltHelyek.Contains(t.Id))).ToList();
-
-            //return await DbContext.Ulohelyek.Where(u => u.Terem.Vetitesek.Any(v => v.Id == vetitesId)).Select(u => new VetitesUlohely(u.Oldal, u.Sor, u.Szek, u.Jegyek.Any(j => j.VetitesId == vetitesId))).ToListAsync();
         }
 
         public async Task<IReadOnlyCollection<JegyTipus>> GetJegyTipusokAsync()

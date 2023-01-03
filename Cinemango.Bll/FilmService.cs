@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
 using System.Threading.Tasks;
 using Cinemango.Data;
 using Microsoft.EntityFrameworkCore;
@@ -76,24 +75,5 @@ namespace Cinemango
 
             await DbContext.SaveChangesAsync();
         }
-
-        //public async Task AddOrUpdateFilmDetails(FilmDetails filmDetails)
-        //{
-        //    Data.Entities.Film film = new Data.Entities.Film();
-        //    if (filmDetails.Id != 0)
-        //        film = await DbContext.Filmek.FindAsync(filmDetails.Id);
-
-        //    film.ImdbId = filmDetails.ImdbId;
-        //    film.Cim = filmDetails.Cim;
-        //    film.EredetiCim = filmDetails.EredetiCim;
-        //    film.KiadasEve = filmDetails.KiadasEve;
-        //    film.ElozetesUrl = filmDetails.ElozetesUrl;
-        //    film.LeirasHtml = filmDetails.LeirasHtml;
-
-        //    if (filmDetails.Id == 0)
-        //        DbContext.Filmek.Add(film);
-
-        //    await DbContext.SaveChangesAsync();
-        //}
     }
 }
