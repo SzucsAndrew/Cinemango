@@ -7,7 +7,7 @@ namespace Cinemango.Web.Pages.Admin
     {
         public TeremService TeremService { get; }
 
-        public TeremLetrehozasModel( TeremService teremService)
+        public TeremLetrehozasModel(TeremService teremService)
         {
             TeremService = teremService;
         }
@@ -21,7 +21,7 @@ namespace Cinemango.Web.Pages.Admin
 
         public IActionResult OnPost()
         {
-            if( ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 TeremService.TeremLetrehozas(TeremModel);
                 return new RedirectToPageResult("/Admin/Termek");
