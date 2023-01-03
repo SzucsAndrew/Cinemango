@@ -1,0 +1,52 @@
+﻿@page
+@model Cinemango.Web.Pages.Admin.TermekModel
+
+<div class="d-flex justify-content-between align-items-center">
+    <h1>Termek kezelése</h1>
+    <span id="spinner" style="display:none;"><i class="fas fa-spinner fa-spin"></i></span>
+    <a asp-page="/Admin/TeremLetrehozas" class="btn btn-outline-primary">
+        <i class="fas fa-plus"></i>&nbsp;Terem létrehozása
+    </a>
+</div>
+
+<table class="table table-striped" id="termek">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col" class="wb-2"></th>
+            <th scope="col">Név</th>
+            <th scope="col" class="text-center">Ülőhelyek száma</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var terem in Model.Termek)
+        {
+            <tr>
+                <td class="d-flex wb-2">
+                    <a asp-page="/Admin/TeremSzerkesztes" asp-route-id="@terem.Id" class="btn btn-sm text-primary"
+                       title="Terem szerkesztése">
+                        <i class="far fa-edit"></i>
+                    </a>
+                    <form method="post" 
+                          data-ajax="true" 
+                          data-ajax-method="post"
+                          data-ajax-confirm="Biztosan törölni szeretné ezt a termet?"
+                          data-ajax-loading="#spinner"
+                          data-ajax-success="refreshPage">
+                        <input type="hidden" name="id" value="@terem.Id" />
+                        <button type="submit" class="btn btn-sm text-danger" title="Terem törlése">
+                            <i class="far fa-trash-alt"></i>
+                        </button>
+                    </form>
+                </td>
+                <td>@terem.Nev</td>
+                <td class="text-center">@terem.UlohelyekSzama</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    <script src="/lib/jquery-ajax-unobtrusive/jquery.unobtrusive-ajax.js"></script>
+}

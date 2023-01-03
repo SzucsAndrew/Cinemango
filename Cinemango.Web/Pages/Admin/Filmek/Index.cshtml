@@ -1,0 +1,68 @@
+﻿@page
+@model Cinemango.Web.Pages.Admin.Filmek.IndexModel
+
+@{
+    ViewData["Title"] = "Filmek kezelése";
+}
+
+<h1>Filmek kezelése</h1>
+
+<p>
+    <a asp-page="Create">Új film létrehozása</a>
+</p>
+<table class="table" id="filmTable">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Film[0].ImdbId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Film[0].Cim)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Film[0].EredetiCim)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Film[0].KiadasEve)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Film[0].ElozetesUrl)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Film) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ImdbId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cim)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EredetiCim)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.KiadasEve)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ElozetesUrl)
+            </td>
+            <td class="text-nowrap">
+                <a asp-page="./Edit" asp-route-id="@item.Id">Szerkesztés</a> |
+                <a asp-page="./Details" asp-route-id="@item.Id">Részletek</a> |
+                <a asp-page="./Delete" asp-route-id="@item.Id">Törlés</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+
+@section Scripts{ 
+    <script>
+        $(document).ready(function () {
+            $("#filmTable").dataTable();
+        });
+    </script>
+}

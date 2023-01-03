@@ -1,0 +1,33 @@
+﻿@page
+@model Cinemango.Web.Pages.Admin.TeremLetrehozasModel
+
+<h1>Új terem létrehozása</h1>
+
+<form method="post">
+    <div asp-validation-summary="All" class="text-danger"></div>
+
+    <div class="form-group">
+        <label asp-for="TeremModel.Nev">Név</label>
+        <input asp-for="TeremModel.Nev" class="form-control" />
+        <span asp-validation-for="TeremModel.Nev" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="TeremModel.Sorok">Sokor száma</label>
+        <input asp-for="TeremModel.Sorok" class="form-control col-md-2" />
+        <span asp-validation-for="TeremModel.Sorok" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="TeremModel.Szekek">Székek száma</label>
+        <input asp-for="TeremModel.Szekek" class="form-control col-md-2" />
+        <span asp-validation-for="TeremModel.Szekek" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Terem létrehozása</button>
+</form>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

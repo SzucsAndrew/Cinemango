@@ -1,0 +1,68 @@
+﻿@page
+@model Cinemango.Web.Pages.Admin.Filmek.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Film szerkesztése</h1>
+
+<h4>Film</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <input type="hidden" asp-for="Film.Id" />
+
+            <div class="form-group">
+                <label asp-for="Film.ImdbId" class="control-label"></label>
+                <input asp-for="Film.ImdbId" class="form-control" />
+                <span asp-validation-for="Film.ImdbId" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Film.Cim" class="control-label"></label>
+                <input asp-for="Film.Cim" class="form-control" />
+                <span asp-validation-for="Film.Cim" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Film.EredetiCim" class="control-label"></label>
+                <input asp-for="Film.EredetiCim" class="form-control" />
+                <span asp-validation-for="Film.EredetiCim" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Film.KiadasEve" class="control-label"></label>
+                <input asp-for="Film.KiadasEve" class="form-control" />
+                <span asp-validation-for="Film.KiadasEve" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Film.LeirasHtml" class="control-label"></label>
+                <input asp-for="Film.LeirasHtml" class="form-control" />
+                <span asp-validation-for="Film.LeirasHtml" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Film.ElozetesUrl" class="control-label"></label>
+                <input asp-for="Film.ElozetesUrl" class="form-control" />
+                <span asp-validation-for="Film.ElozetesUrl" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Mentés" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Vissza a listához</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,129 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="NameAndType">
+  <Class Name="Cinemango.Data.Entities.Felhasznalo">
+    <Position X="15" Y="5.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAIAAAAAAAAIBAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entities\Felhasznalo.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Vasarlasok" />
+    </ShowAsCollectionAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Cinemango.Data.Entities.Film">
+    <Position X="8.75" Y="9.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>BDBSAAAAAAAAAAAABABAAAAAAAAACAAAAAAAAAAAAAE=</HashCode>
+      <FileName>Entities\Film.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Vetitesek" />
+    </ShowAsCollectionAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Cinemango.Data.Entities.Jegy">
+    <Position X="12" Y="7.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAACBAAAAAAAAAAAAABBAAAQAABgAIAAAgAAAAgACAA=</HashCode>
+      <FileName>Entities\Jegy.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Ulohely" />
+      <Property Name="Vasarlas" />
+      <Property Name="Vetites" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Cinemango.Data.Entities.JegyTipus">
+    <Position X="12" Y="10.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAACAAAABAAAAAAAAAAIAAAIAAAAAAAAA=</HashCode>
+      <FileName>Entities\JegyTipus.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Jegyek" />
+    </ShowAsCollectionAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Cinemango.Data.Entities.Terem">
+    <Position X="8.75" Y="5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>BAACAAAAAAAAQCAAAABAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entities\Terem.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Ulohelyek" />
+      <Property Name="Vetitesek" />
+    </ShowAsCollectionAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Cinemango.Data.Entities.Ulohely">
+    <Position X="11.75" Y="4.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAABAAAAAAAAAASAAEIACAQAAAAA=</HashCode>
+      <FileName>Entities\Ulohely.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Oldal" />
+      <Property Name="Terem" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="Jegyek" />
+    </ShowAsCollectionAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Cinemango.Data.Entities.Vasarlas">
+    <Position X="15" Y="8" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAABAAAAQAAACAAAAAIAAIgAAAAA=</HashCode>
+      <FileName>Entities\Vasarlas.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Statusz" />
+      <Property Name="Felhasznalo" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="Jegyek" />
+    </ShowAsCollectionAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Cinemango.Data.Entities.Vetites">
+    <Position X="8.75" Y="7.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAGAAAAAAAAAAAAAABAAAAAAAAABCAAAoACAgAAAAA=</HashCode>
+      <FileName>Entities\Vetites.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Tipus" />
+      <Property Name="Film" />
+      <Property Name="Terem" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="Jegyek" />
+    </ShowAsCollectionAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Enum Name="Cinemango.UlohelyOldal">
+    <Position X="15" Y="4.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAgAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>UlohelyOldal.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Cinemango.VasarlasStatusz">
+    <Position X="15" Y="10.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAEAAAAQ=</HashCode>
+      <FileName>VasarlasStatusz.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Cinemango.Data.VetitesTipus">
+    <Position X="6" Y="7.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AABAAAAAAgAAAAAAAAAAAAAAAAgAgAAAAAAAACAgAAA=</HashCode>
+      <FileName>VetitesTipus.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

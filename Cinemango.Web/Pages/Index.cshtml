@@ -1,0 +1,119 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Műsoron";
+    var ma = DateTime.Today;
+    var holnap = DateTime.Today.AddDays(1);
+}
+
+<section id="hamarosan">
+    <h1 class="display-4">Hamarosan</h1>
+
+    <div id="fooldal-carousel" class="carousel slide pb-3" data-ride="carousel">
+        <ol class="carousel-indicators">
+            @for (var filmIndex = 0; filmIndex < 3 && filmIndex < Model.Filmek.Count(); filmIndex++)
+            {
+                <li data-target="#fooldal-carousel" data-slide-to="@filmIndex" class="@(filmIndex == 0 ? "active" : "")"></li>
+            }
+        </ol>
+        <div class="carousel-inner">
+            @{
+                var first = true;
+                foreach (var film in Model.Filmek.Skip(3).Take(3))
+                {
+                    <div class="carousel-item @(first ? "active" : "")">
+                        <div class="card">
+                            <div class="row no-gutters">
+                                <div class="col-md-4">
+                                    <div class="card-img text-center">
+                                        <img src="/img/@(film.Id).jpg" class="img-fluid mt-3" alt="@film.Cim poszter" />
+                                    </div>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="card-body">
+                                        <h5 class="card-title">@film.Cim</h5>
+                                        @if (film.Cim != film.EredetiCim)
+                                        {
+                                            <h6 class="card-subtitle text-muted">@film.EredetiCim</h6>
+                                        }
+                                    </div>
+
+                                    <iframe class="film-trailer-embed" src="@film.ElozetesUrl" title="@film.Cim előzetes" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+                                    <hr />
+
+                                    <p class="card-text">@Html.Raw(film.LeirasHtml)</p>
+
+                                    <hr />
+
+                                    <ul class="list-group list-group-flush">
+                                        @foreach (var vetites in film.Vetitesek.Take(4))
+                                        {
+                                            <li class="list-group-item">
+                                                <a class="card-link" asp-page="/Vetites" asp-route-Id="@vetites.Id">
+                                                    @(vetites.Idopont.Date == ma ? "Ma" : vetites.Idopont.Date == holnap ? "Holnap" : vetites.Idopont.ToString("MM. dd.")) @vetites.Idopont.ToString("HH:mm") | @vetites.Terem terem
+                                                </a>
+                                            </li>
+                                        }
+                                        @if (film.Vetitesek.Count() > 4)
+                                        {
+                                            <li class="list-group-item">
+                                                <a class="card-link" asp-page="/Film" asp-route-Id="@film.Id">
+                                                    További vetítések...
+                                                </a>
+                                            </li>
+                                        }
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    first = false;
+                }
+                <a class="carousel-control-prev" href="#fooldal-carousel" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon"></span>
+                </a>
+                <a class="carousel-control-next" href="#fooldal-carousel" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon"></span>
+                </a>
+            }
+        </div>
+    </div>
+</section>
+
+<section id="musoron">
+    <h1 class="display-4">Műsoron</h1>
+
+    <div class="container">
+        <div class="row">
+            @foreach (var (film, vetites) in Model.Filmek.SelectMany(f => f.Vetitesek.Select(v => (f, v))).OrderBy(e => e.v.Idopont).Take(48))
+            {
+                <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
+                    <div class="card text-white">
+                        <img src="~/img/@(film.Id).jpg" class="card-img-top" alt="@film.Cim poszter" />
+                        <div class="card-body">
+                            <h6 class="card-title">
+                                <a asp-page="/Film" asp-route-Id="@film.Id">@film.Cim</a>
+                            </h6>
+
+                            <a asp-page="/Vetites" asp-route-Id="@vetites.Id" class="card-link">
+                                @(vetites.Idopont.Date == ma ? "Ma" : vetites.Idopont.Date == holnap ? "Holnap" : vetites.Idopont.ToString("MM. dd.")) @vetites.Idopont.ToString("HH:mm") | @vetites.Terem terem
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>
+
+<section id="araink">
+    <h4 class="display-4">
+        Áraink
+    </h4>
+
+    @foreach (var tipus in Model.JegyTipusok.OrderBy(j => j.Ar))
+    {
+        <p>@tipus.Nev: <b>@tipus.Ar.ToString("N0") Ft</b></p>
+    }
+</section>

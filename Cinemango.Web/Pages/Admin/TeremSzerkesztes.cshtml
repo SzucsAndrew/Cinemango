@@ -1,0 +1,19 @@
+﻿@page
+@model Cinemango.Web.Pages.Admin.TeremSzerkesztesModel
+
+<h1>Terem szerkesztése</h1>
+<form method="post">
+    <input type="hidden" asp-for="TeremModel.Id" />
+
+    <div class="form-group">
+        <label asp-for="TeremModel.Nev">Név:</label>
+        <input asp-for="TeremModel.Nev" class="form-control" />
+        <span asp-validation-for="TeremModel.Nev" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Mentés</button>
+</form>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
